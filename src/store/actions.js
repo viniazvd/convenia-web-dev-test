@@ -35,7 +35,7 @@ export const getDetails = ({ commit }) => {
   return axios
     .get('details')
     .then(response => {
-      commit('SET_DETAILS', response.data)
+      commit('SET_DETAILS', response.data.data)
     })
     .catch(error => { console.log(error) })
 }
