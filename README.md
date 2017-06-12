@@ -11,7 +11,6 @@
   - Javascript Design Patterns;
   - Pré/Pós processors de CSS (SASS, Less, Stylus, PostCSS, etc.);
   - Você deve entregar este teste com o stack inicial (`vue`, `vuex` e `axios`) mas sinta-se livre para adcionar quantas dependencias quiser;
-  - Unit tests e/ou e2e tests.
 
 ## Teste
 
