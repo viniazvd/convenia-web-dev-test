@@ -38,7 +38,7 @@ API: [https://private-979ab-testefrontend.apiary-mock.com/ddd/prices](https://pr
 
 API: [https://private-979ab-testefrontend.apiary-mock.com/ddd/details](https://private-979ab-testefrontend.apiary-mock.com/ddd/details)
 
-A promoção consiste em poder falar de graça até um determinado tempo (em minutos) e só paga os minutos excedentes. Os minutos excedentes tem um acréscimo de 10% sobre a tarifa normal do minuto. Os planos são:
+A promoção consiste em falar de graça até um determinado tempo (em minutos) e só pagar os minutos excedentes. Os minutos excedentes tem um acréscimo de 10% sobre a tarifa normal do minuto. Os planos são:
 
 |   planos   |tempo|
 |:-----------|----:|
