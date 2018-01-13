@@ -27,7 +27,12 @@ export default {
         return prices.every(hasPrice)
       }
     },
-    label: [String, Object, Array]
+    label: {
+      type: String,
+      validator: function (value) {
+        return value === 'origin' || value === 'destiny'
+      }
+    }
   },
 
   data () {
