@@ -1,7 +1,7 @@
 <template>
   <div class="input">
     <select :value="this.selected" @input="this.emiteOrigin">
-      <option disabled value="">{{ this.label }}</option>
+      <option value="">{{ this.label }}</option>
       <option v-for="price in this.prices" :value="type(price)" :key="price.uniqueKeyNotFound">
         {{ type(price) }}
       </option>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'Input',
+  name: 'SelectDDD',
 
   props: {
     selected: {
@@ -29,6 +29,7 @@ export default {
     },
     label: {
       type: String,
+      require: true,
       validator: function (value) {
         return value === 'origin' || value === 'destiny'
       }
