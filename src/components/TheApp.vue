@@ -3,52 +3,30 @@
     <TheHeading />
 
     <div class="container-inputs">
-      <div class="input">
-        <select v-model="originSelected">
-          <option disabled value="">Origem</option>
-          <option v-for="price in this.getArrayPrices" :value="price.origin" :key="price.uniqueKeyNotFound">
-            {{ price.origin }}
-          </option>
-        </select>
-      </div>
+      <InputOrigin 
+        :selected.sync="originSelected" 
+        :prices="this.getArrayPrices">
+      </InputOrigin>
+
+      <InputDestiny 
+        :selected.sync="destinySelected" 
+        :prices="this.getArrayPrices">
+      </InputDestiny>
 
       <div class="input">
-        <select v-model="destinySelected">
-          <option disabled value="">Destino</option>
-          <option v-for="price in this.getArrayPrices" :value="price.destiny" :key="price.uniqueKeyNotFound">
-            {{ price.destiny }}
-          </option>
-        </select>
-      </div>
-
-      <div class="input">
-        <input type="number" v-model="minuteSelected" placeholder="Minutos">
+        <input 
+          type="number" 
+          v-model="minuteSelected" 
+          placeholder="Minutos">
       </div>
     </div>
 
     <div class="container-table">
-      <table>
-        <thead>
-          <tr>
-            <th v-for="plan in this.getPlans" :key="plan.plan_id"> 
-            {{ plan.plan_name }}
-            </th>
-            <th>
-              Normal
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td v-for="x in this.withPromotion" :key="x.id">
-              {{ x }}
-            </td>
-            <td>
-              {{ this.withoutPromotion }} 
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <TheTable 
+        :plans="this.getPlans" 
+        :withPromotion="this.withPromotion" 
+        :withoutPromotion="this.withoutPromotion">
+      </TheTable>
     </div>
 
   </div>
@@ -63,7 +41,10 @@ export default {
   name: 'TheApp',
 
   components: {
-    TheHeading: () => import('./TheHeading')
+    TheHeading: () => import('./TheHeading'),
+    InputOrigin: () => import('./InputOrigin'),
+    InputDestiny: () => import('./InputDestiny'),
+    TheTable: () => import('./TheTable')
   },
 
   data () {
@@ -89,9 +70,8 @@ export default {
       const punishment = '0.10'
       const timePaid = this.minuteSelected - plan
       const normalPrice = this.getPrices[this.priceBetween()] * timePaid
-      const result = (parseFloat(normalPrice) * parseFloat(punishment) + normalPrice).toFixed(2)
 
-      return result
+      return (normalPrice + parseFloat(normalPrice) * parseFloat(punishment)).toFixed(2)
     }
   },
 
@@ -153,49 +133,5 @@ export default {
   justify-content: center;
   align-items: baseline;
   padding-top: 30px;
-}
-
-table {
-  border: 2px solid #42b983;
-  border-radius: 3px;
-  background-color: #fff;
-}
-th {
-  background-color: #42b983;
-  color: rgba(255,255,255,0.66);
-  cursor: pointer;
-  user-select: none;
-  font-weight: 300;
-}
-td {
-  background-color: #f9f9f9;
-}
-th, td {
-  min-width: 120px;
-  padding: 10px 20px;
-}
-th.active {
-  color: #fff;
-}
-th.active .arrow {
-  opacity: 1;
-}
-.arrow {
-  display: inline-block;
-  vertical-align: middle;
-  width: 0;
-  height: 0;
-  margin-left: 5px;
-  opacity: 0.66;
-}
-.arrow.asc {
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-bottom: 4px solid #fff;
-}
-.arrow.dsc {
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #fff;
 }
 </style>
