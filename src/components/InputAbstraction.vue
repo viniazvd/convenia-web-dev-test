@@ -1,7 +1,7 @@
 <template>
   <div class="input">
     <select :value="this.selected" @input="this.emiteOrigin">
-      <option disabled value="">Origem</option>
+      <option disabled value="">{{ this.label }}</option>
       <option v-for="price in this.prices" :value="type(price)" :key="price.uniqueKeyNotFound">
         {{ type(price) }}
       </option>
