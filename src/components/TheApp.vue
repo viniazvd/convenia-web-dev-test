@@ -36,7 +36,6 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-
 import setData from '../support/mixins/setData'
 
 export default {
@@ -63,16 +62,6 @@ export default {
 
     priceBetween () {
       return `${this.originSelected}-${this.destinySelected}`
-    },
-
-    calculationWithPlan (plan) {
-      if (this.minuteSelected < plan) return '-'
-
-      const punishment = '0.10'
-      const timePaid = this.minuteSelected - plan
-      const normalPrice = this.getPrices[this.priceBetween()] * timePaid
-
-      return (normalPrice + parseFloat(normalPrice) * parseFloat(punishment)).toFixed(2)
     }
   },
 
@@ -82,21 +71,17 @@ export default {
     withPromotion () {
       if (!this.getPrices[this.priceBetween()]) return '---'
 
-      const faleMais30 = this.calculationWithPlan(30)
+      const faleMais30 = this.$services.calculationWithPlan(30, this.minuteSelected, this.getPrices, this.priceBetween)
 
-      const faleMais60 = this.calculationWithPlan(60)
+      const faleMais60 = this.$services.calculationWithPlan(60, this.minuteSelected, this.getPrices, this.priceBetween)
 
-      const faleMais120 = this.calculationWithPlan(120)
+      const faleMais120 = this.$services.calculationWithPlan(120, this.minuteSelected, this.getPrices, this.priceBetween)
 
       return [faleMais30, faleMais60, faleMais120]
     },
 
     withoutPromotion () {
-      if (this.originSelected && this.destinySelected && this.minuteSelected) {
-        if (!this.getPrices[this.priceBetween()]) return '-'
-        return 'R$ ' + (this.getPrices[this.priceBetween()] * this.minuteSelected).toFixed(2)
-      }
-      return '-'
+      return this.$services.calculationWithoutPlan(this.originSelected, this.destinySelected, this.minuteSelected, this.getPrices, this.priceBetween)
     }
   }
 }
