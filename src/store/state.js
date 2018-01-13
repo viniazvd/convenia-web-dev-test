@@ -1,5 +1,5 @@
 export default {
   plans: [],
   prices: [],
-  details: {}
+  details: []
 }
