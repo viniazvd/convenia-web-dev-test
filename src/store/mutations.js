@@ -1,11 +1,13 @@
-export const SET_PLANS = (state, plans) => {
-  state.plans = plans
-}
+import * as types from './mutations-types'
 
-export const SET_PRICES = (state, prices) => {
-  state.prices = prices
-}
-
-export const SET_DETAILS = (state, details) => {
-  state.details = details
+export default {
+  [types.SET_DETAILS] (state, details) {
+    state.details = details
+  },
+  [types.SET_PLANS] (state, plans) {
+    state.plans = plans
+  },
+  [types.SET_PRICES] (state, prices) {
+    state.prices = prices
+  }
 }

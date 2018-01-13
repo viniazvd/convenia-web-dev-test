@@ -1,41 +1,20 @@
-import axios from 'axios'
+import { details, plans, prices } from '../services'
+import * as types from './mutations-types'
 
-const API_ROOT = 'https://private-979ab-testefrontend.apiary-mock.com/ddd/'
-
-axios.defaults.baseURL = API_ROOT
-
-/**
- * Lista todos os planos
- */
-export const getPlans = ({ commit }) => {
-  return axios
-    .get('plans')
-    .then(response => {
-      commit('SET_PLANS', response.data.data)
-    })
-    .catch(error => { console.log(error) })
+export const setDetails = ({ commit }) => {
+  return details()
+    .then(res => commit(types.SET_DETAILS, res.data.data))
+    .catch(error => Promise.reject(error))
 }
 
-/**
- * Lista a tabela de preços
- */
-export const getPrices = ({ commit }) => {
-  return axios
-    .get('prices')
-    .then(response => {
-      commit('SET_PRICES', response.data.data)
-    })
-    .catch(error => { console.log(error) })
+export const setPlans = ({ commit }) => {
+  return plans()
+    .then(res => commit(types.SET_PLANS, res.data.data))
+    .catch(error => Promise.reject(error))
 }
 
-/**
- * Lista os nomes das cidades de cada DDD
- */
-export const getDetails = ({ commit }) => {
-  return axios
-    .get('details')
-    .then(response => {
-      commit('SET_DETAILS', response.data.data)
-    })
-    .catch(error => { console.log(error) })
+export const setPrices = ({ commit }) => {
+  return prices()
+    .then(res => commit(types.SET_PRICES, res.data.data))
+    .catch(error => Promise.reject(error))
 }

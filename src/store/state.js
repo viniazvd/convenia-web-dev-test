@@ -1,7 +1,5 @@
-const state = {
+export default {
   plans: [],
   prices: [],
   details: {}
 }
-
-export default state
