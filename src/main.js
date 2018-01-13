@@ -6,15 +6,9 @@ Vue.config.productionTip = false
 
 // pluggins
 import HttpPlugin from './support/plugins/http'
-import DetailPlugin from './support/plugins/detail'
-import PlanPlugin from './support/plugins/plan'
-import PricePlugin from './support/plugins/price'
 
 // registering pluggins
 Vue.use(HttpPlugin)
-Vue.use(DetailPlugin)
-Vue.use(PlanPlugin)
-Vue.use(PricePlugin)
 
 /* eslint-disable no-new */
 new Vue({
