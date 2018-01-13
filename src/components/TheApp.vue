@@ -3,17 +3,17 @@
     <TheHeading />
 
     <div class="container-inputs">
-      <InputAbstraction 
+      <SelectDDD 
         :selected.sync="originSelected" 
         :prices="this.getArrayPrices"
         label="origin">
-      </InputAbstraction>
+      </SelectDDD>
 
-      <InputAbstraction 
+      <SelectDDD 
         :selected.sync="destinySelected" 
         :prices="this.getArrayPrices"
         label="destiny">
-      </InputAbstraction>
+      </SelectDDD>
 
       <div class="input">
         <input 
@@ -44,7 +44,7 @@ export default {
 
   components: {
     TheHeading: () => import('./TheHeading'),
-    InputAbstraction: () => import('./InputAbstraction'),
+    SelectDDD: () => import('./SelectDDD'),
     TheTable: () => import('./TheTable')
   },
 
