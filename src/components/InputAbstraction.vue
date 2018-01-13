@@ -45,10 +45,10 @@ export default {
       this.$emit('update:selected', value.target.value)
     },
 
-    type (val1) {
+    type (type) {
       return this.initialLabel === 'origin'
-        ? val1.origin
-        : val1.destiny
+        ? type.origin
+        : type.destiny
     }
   }
 }
