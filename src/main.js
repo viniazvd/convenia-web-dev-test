@@ -5,12 +5,10 @@ import store from './store'
 Vue.config.productionTip = false
 
 // pluggins
-import HttpPlugin from './support/plugins/http'
 import ServicesPlugin from './support/plugins/calculations'
 
 // registering pluggins
 Vue.use(ServicesPlugin)
-Vue.use(HttpPlugin)
 
 /* eslint-disable no-new */
 new Vue({
