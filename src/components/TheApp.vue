@@ -5,13 +5,13 @@
     <div class="container-inputs">
       <SelectDDD 
         :selected.sync="originSelected" 
-        :prices="this.getDDD"
+        :ddds="this.getDDD"
         label="Origem">
       </SelectDDD>
 
       <SelectDDD 
         :selected.sync="destinySelected" 
-        :prices="this.getDDD"
+        :ddds="this.getDDD"
         label="Destino">
       </SelectDDD>
 

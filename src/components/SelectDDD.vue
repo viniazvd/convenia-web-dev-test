@@ -2,8 +2,8 @@
   <div class="input">
     <select :value="this.selected" @input="this.emiteOrigin">
       <option value="">{{ this.label }}</option>
-      <option v-for="price in this.prices" :value="type(price)" :key="price.uniqueKeyNotFound">
-        {{ type(price) }}
+      <option v-for="ddd in this.ddds" :value="ddd" :key="ddd.uniqueKeyNotFound">
+        {{ ddd }}
       </option>
     </select>
   </div>
@@ -18,44 +18,47 @@ export default {
       type: String,
       require: true
     },
-    prices: {
+    ddds: {
       type: Array,
-      require: true,
-      validator: function (prices) {
-        const hasPrice = x => x.price
+      require: true
+      // old validator
+      // validator: function (prices) {
+      //   const hasPrice = x => x.price
 
-        return prices.every(hasPrice)
-      }
+      //   return prices.every(hasPrice)
+      // }
     },
     label: {
       type: String,
-      require: true,
-      validator: function (value) {
-        return value === 'origin' || value === 'destiny'
-      }
+      require: true
+      // old validator
+      // validator: function (value) {
+      //   return value === 'origin' || value === 'destiny'
+      // }
     }
   },
 
-  data () {
-    return {
-      initialLabel: ''
-    }
-  },
+  // data () {
+  //   return {
+  //     initialLabel: ''
+  //   }
+  // },
 
-  created () {
-    this.initialLabel = this.label
-  },
+  // created () {
+  //   this.initialLabel = this.label
+  // },
 
   methods: {
     emiteOrigin (value) {
       this.$emit('update:selected', value.target.value)
-    },
-
-    type (type) {
-      return this.initialLabel === 'origin'
-        ? type.origin
-        : type.destiny
     }
+
+    // old method
+    // type (type) {
+    //   return this.initialLabel === 'origin'
+    //     ? type.origin
+    //     : type.destiny
+    // }
   }
 }
 </script>
