@@ -5,14 +5,14 @@
     <div class="container-inputs">
       <SelectDDD 
         :selected.sync="originSelected" 
-        :prices="this.getArrayPrices"
-        label="origin">
+        :prices="this.getDDD"
+        label="Origem">
       </SelectDDD>
 
       <SelectDDD 
         :selected.sync="destinySelected" 
-        :prices="this.getArrayPrices"
-        label="destiny">
+        :prices="this.getDDD"
+        label="Destino">
       </SelectDDD>
 
       <div class="input">
@@ -23,12 +23,21 @@
       </div>
     </div>
 
-    <div class="container-table">
+    <div class="container-tables">
       <AppTablePromotions 
         :plans="this.getPlans" 
         :withPromotion="this.withPromotion" 
         :withoutPromotion="this.withoutPromotion">
       </AppTablePromotions>
+    </div>
+
+    <div class="container-tables">
+      <AppTableDataSelected
+        :origin="this.originSelected"
+        :destiny="this.destinySelected"
+        :minutes="this.minuteSelected"
+        :details="this.getDetails">
+      </AppTableDataSelected>
     </div>
 
   </div>
@@ -44,7 +53,8 @@ export default {
   components: {
     TheHeading: () => import('./TheHeading'),
     SelectDDD: () => import('./SelectDDD'),
-    AppTablePromotions: () => import('./AppTablePromotions')
+    AppTablePromotions: () => import('./AppTablePromotions'),
+    AppTableDataSelected: () => import('./AppTableDataSelected')
   },
 
   data () {
@@ -66,7 +76,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['getDetails', 'getPlans', 'getArrayPrices', 'getPrices']),
+    ...mapGetters(['getDetails', 'getPlans', 'getDDD', 'getPrices']),
 
     withPromotion () {
       // if all inputs have been selected
@@ -113,12 +123,12 @@ export default {
   width: 65px;
 }
 
-.container-table {
+.container-tables {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: baseline;
-  padding-top: 30px;
+  padding-top: 40px;
 }
 </style>
