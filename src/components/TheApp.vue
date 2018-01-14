@@ -69,15 +69,16 @@ export default {
     ...mapGetters(['getDetails', 'getPlans', 'getArrayPrices', 'getPrices']),
 
     withPromotion () {
-      if (!this.getPrices[this.priceBetween()]) return '---'
+      // if all inputs have been selected
+      if (this.originSelected && this.destinySelected && this.minuteSelected) {
+        // checks if exist tax
+        if (!this.getPrices[this.priceBetween()]) return '---'
 
-      const faleMais30 = this.$services.calculationWithPlan(30, this.minuteSelected, this.getPrices, this.priceBetween)
-
-      const faleMais60 = this.$services.calculationWithPlan(60, this.minuteSelected, this.getPrices, this.priceBetween)
-
-      const faleMais120 = this.$services.calculationWithPlan(120, this.minuteSelected, this.getPrices, this.priceBetween)
-
-      return [faleMais30, faleMais60, faleMais120]
+        return this.getPlans.map(plan => {
+          return this.$services.calculationWithPlan(plan.time, this.minuteSelected, this.getPrices, this.priceBetween)
+        })
+      }
+      return '---'
     },
 
     withoutPromotion () {
