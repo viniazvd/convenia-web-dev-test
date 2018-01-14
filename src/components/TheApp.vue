@@ -60,7 +60,7 @@ export default {
   methods: {
     ...mapActions(['setDetails', 'setPlans', 'setPrices']),
 
-    priceBetween () {
+    accessed () {
       return `${this.originSelected}-${this.destinySelected}`
     }
   },
@@ -72,17 +72,17 @@ export default {
       // if all inputs have been selected
       if (this.originSelected && this.destinySelected && this.minuteSelected) {
         // checks if exist tax
-        if (!this.getPrices[this.priceBetween()]) return '---'
+        if (!this.getPrices[this.accessed()]) return '---'
 
         return this.getPlans.map(plan => {
-          return this.$services.calculationWithPlan(plan.time, this.minuteSelected, this.getPrices, this.priceBetween)
+          return this.$services.calculationWithPlan(plan.time, this.minuteSelected, this.getPrices, this.accessed)
         })
       }
       return '---'
     },
 
     withoutPromotion () {
-      return this.$services.calculationWithoutPlan(this.originSelected, this.destinySelected, this.minuteSelected, this.getPrices, this.priceBetween)
+      return this.$services.calculationWithoutPlan(this.originSelected, this.destinySelected, this.minuteSelected, this.getPrices, this.accessed)
     }
   }
 }
