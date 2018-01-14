@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: 'TheTablePromotions',
+  name: 'AppTablePromotions',
 
   props: ['plans', 'withPromotion', 'withoutPromotion']
 }

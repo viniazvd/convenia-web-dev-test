@@ -24,11 +24,11 @@
     </div>
 
     <div class="container-table">
-      <TheTablePromotions 
+      <AppTablePromotions 
         :plans="this.getPlans" 
         :withPromotion="this.withPromotion" 
         :withoutPromotion="this.withoutPromotion">
-      </TheTablePromotions>
+      </AppTablePromotions>
     </div>
 
   </div>
@@ -44,7 +44,7 @@ export default {
   components: {
     TheHeading: () => import('./TheHeading'),
     SelectDDD: () => import('./SelectDDD'),
-    TheTablePromotions: () => import('./TheTablePromotions')
+    AppTablePromotions: () => import('./AppTablePromotions')
   },
 
   data () {
