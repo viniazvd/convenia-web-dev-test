@@ -2,7 +2,7 @@
   <div class="container">
     <TheHeading />
 
-    <div class="container-inputs">
+    <div class="container__inputs">
       <SelectDDD 
         :selected.sync="originSelected" 
         :ddds="this.getDDD"
@@ -15,15 +15,14 @@
         label="Destino">
       </SelectDDD>
 
-      <div class="input">
-        <input 
-          type="number" 
-          v-model="minuteSelected" 
-          placeholder="Minutos">
-      </div>
+      <input 
+        type="number" 
+        v-model="minuteSelected" 
+        placeholder="Minutos"
+        style="width: 80px;" />
     </div>
 
-    <div class="container-tables">
+    <div class="container__table">
       <AppTablePromotions 
         :plans="this.getPlans" 
         :withPromotion="this.withPromotion" 
@@ -31,7 +30,7 @@
       </AppTablePromotions>
     </div>
 
-    <div class="container-tables">
+    <div class="container__table">
       <AppTableDataSelected
         :origin="this.originSelected"
         :destiny="this.destinySelected"
@@ -98,37 +97,30 @@ export default {
 }
 </script>
 
-<style scoped>
-.container {
+<style lang="sass" scoped>
+@import "../assets/sass/_variables.sass"; 
+
+// BLOCKS
+.container
   padding: 100px;
   text-align: center;
-}
+  
 
-.container-inputs {
+
+// ELEMENTS
+.container__inputs
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: baseline;
-  padding-top: 30px;
-}
+  padding-top: $padding-top-value;
 
-.input {
-  flex: 0 1 auto;
-  align-content: center;
-  padding-right: 50px;
-}
-
-.input input {
-  width: 65px;
-}
-
-.container-tables {
+.container__table
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: baseline;
-  padding-top: 40px;
-}
+  padding-top: $padding-top-value;
 </style>

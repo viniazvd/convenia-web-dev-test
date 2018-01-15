@@ -1,6 +1,8 @@
 <template>
-  <div class="input">
-    <select :value="this.selected" @input="this.emiteOrigin">
+  <div class="container__select--configuration">
+    <select 
+      :value="this.selected"
+      @input="this.emiteOrigin">
       <option value="">{{ this.label }}</option>
       <option v-for="ddd in this.ddds" :value="ddd" :key="ddd.uniqueKeyNotFound">
         {{ ddd }}
@@ -20,54 +22,33 @@ export default {
     },
     ddds: {
       type: Array,
-      require: true
-      // old validator
-      // validator: function (prices) {
-      //   const hasPrice = x => x.price
+      require: true,
+      validator: function (prices) {
+        const hasSizeEqual3 = x => x.length === 3
 
-      //   return prices.every(hasPrice)
-      // }
+        return prices.every(hasSizeEqual3)
+      }
     },
     label: {
       type: String,
       require: true
-      // old validator
-      // validator: function (value) {
-      //   return value === 'origin' || value === 'destiny'
-      // }
     }
   },
-
-  // data () {
-  //   return {
-  //     initialLabel: ''
-  //   }
-  // },
-
-  // created () {
-  //   this.initialLabel = this.label
-  // },
 
   methods: {
     emiteOrigin (value) {
       this.$emit('update:selected', value.target.value)
     }
-
-    // old method
-    // type (type) {
-    //   return this.initialLabel === 'origin'
-    //     ? type.origin
-    //     : type.destiny
-    // }
   }
 }
 </script>
 
-<style scoped>
-.input {
+<style lang="sass" scoped>
+@import "../assets/sass/_variables.sass"; 
+
+.container__select--configuration
   flex: 0 1 auto;
   align-content: center;
-  padding-right: 50px;
-}
+  padding-right: $padding-right-value;
 </style>
 

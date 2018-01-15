@@ -1,5 +1,5 @@
 <template>
-  <div class="title" v-once>
+  <div class="h1--decoration" v-once>
     <h1>Calculadora de Tarifas DevTel</h1>
   </div>
 </template>
@@ -10,9 +10,8 @@ export default {
 }
 </script>
 
-<style scoped>
-.title {
+<style lang="sass" scoped>
+.h1--decoration
   text-decoration: underline;
-}
 </style>
 
