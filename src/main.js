@@ -6,9 +6,11 @@ Vue.config.productionTip = false
 
 // pluggins
 import ServicesPlugin from './support/plugins/calculations'
+import LoaderPlugin from './support/plugins/loader'
 
 // registering pluggins
 Vue.use(ServicesPlugin)
+Vue.use(LoaderPlugin, store)
 
 /* eslint-disable no-new */
 new Vue({
