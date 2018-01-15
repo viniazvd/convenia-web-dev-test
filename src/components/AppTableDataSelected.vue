@@ -13,7 +13,7 @@
           <tr>
             <td>{{ this.getNameStateOrigin }}</td>
             <td>{{ this.getNameStateDestiny }}</td>
-            <td>{{ this.minutes }} minutos</td>
+            <td>{{ this.getTime }}</td>
           </tr>
         </tbody>
       </table>
@@ -44,6 +44,17 @@ export default {
       if (!this.destiny) return '-'
 
       return this.details[this.destiny]
+    },
+
+    getTime () {
+      // if the table is appearing
+      // (to avoid unnecessary calculations)
+      if (!this.origin && !this.destiny) return '-'
+
+      const hour = Math.floor(this.minutes / 60)
+      const min = (this.minutes % 60)
+
+      return `${hour}h ${min}min`
     }
   }
 }
