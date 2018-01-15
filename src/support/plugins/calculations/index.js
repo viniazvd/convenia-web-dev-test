@@ -1,4 +1,4 @@
-import * as $services from '../../../services'
+import * as $services from '../../../domains/speakMore/services'
 
 const install = Vue => {
   Object.defineProperties(Vue.prototype, {
