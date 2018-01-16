@@ -22,23 +22,18 @@
         style="width: 80px;" />
     </div>
 
-    <div class="container__table">
-      <AppTablePromotions 
-        :plans="this.getPlans" 
-        :withPromotion="this.withPromotion" 
-        :withoutPromotion="this.withoutPromotion">
-      </AppTablePromotions>
-    </div>
+    <AppTablePromotions 
+      :plans="this.getPlans" 
+      :withPromotion="this.withPromotion" 
+      :withoutPromotion="this.withoutPromotion">
+    </AppTablePromotions>
 
-    <div class="container__table">
-      <AppTableDataSelected
-        :origin="this.originSelected"
-        :destiny="this.destinySelected"
-        :minutes="this.minuteSelected"
-        :details="this.getDetails">
-      </AppTableDataSelected>
-    </div>
-
+    <AppTableDataSelected
+      :origin="this.originSelected"
+      :destiny="this.destinySelected"
+      :minutes="this.minuteSelected"
+      :details="this.getDetails">
+    </AppTableDataSelected>
   </div>
 </template>
 
@@ -108,25 +103,20 @@ export default {
 <style lang="sass" scoped>
 @import "../../../assets/sass/_base.sass"; 
 
-@mixin container()
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: baseline;
-  padding-top: $base__padding-top;
-
-
 // BLOCKS
 .container
   padding: em(35);
   text-align: center;
 
-
 // ELEMENTS
 .container__inputs
-  @include container()
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 
-.container__table
-  @include container()
+@media screen and(min-width: 500px)
+  .container__plans
+    flex-direction: column;
 </style>
