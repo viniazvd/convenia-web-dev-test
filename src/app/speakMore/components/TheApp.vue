@@ -25,7 +25,8 @@
     <AppTablePromotions 
       :plans="this.getPlans" 
       :withPromotion="this.withPromotion" 
-      :withoutPromotion="this.withoutPromotion">
+      :withoutPromotion="this.withoutPromotion"
+      :isValid="inputIsValid">
     </AppTablePromotions>
 
     <CheckTax 

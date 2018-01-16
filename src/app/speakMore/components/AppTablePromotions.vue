@@ -10,7 +10,7 @@
       <div class="item">Normal</div>
     </div>
 
-    <div class="container__prices">
+    <div class="container__prices" :class="this.inputIsValid">
       <div 
         class="item"
         v-for="value in this.withPromotion" 
@@ -26,7 +26,13 @@
 export default {
   name: 'AppTablePromotions',
 
-  props: ['plans', 'withPromotion', 'withoutPromotion']
+  props: ['plans', 'withPromotion', 'withoutPromotion', 'isValid'],
+
+  computed: {
+    inputIsValid () {
+      return !this.isValid ? 'container__prices--change-color' : ''
+    }
+  }
 }
 </script>
 
@@ -57,6 +63,13 @@ export default {
   padding-top: 15px;
   padding-bottom: 15px;
   border: 1px solid $color__primary--light;
+
+.container__prices--change-color 
+  background: red;
+
+// MODIFIERS
+.input--change-color
+  background: red;
 
 .item 
   flex: 1 1 auto;
