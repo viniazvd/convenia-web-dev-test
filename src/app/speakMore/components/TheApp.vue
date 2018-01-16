@@ -28,6 +28,12 @@
       :withoutPromotion="this.withoutPromotion">
     </AppTablePromotions>
 
+    <CheckTax 
+      :origin="originSelected"
+      :destiny="destinySelected"
+      :inputIsValid="this.inputIsValid">
+    </CheckTax>
+
     <AppTableDataSelected
       :origin="this.originSelected"
       :destiny="this.destinySelected"
@@ -47,14 +53,16 @@ export default {
     TheHeading: () => import('./TheHeading'),
     SelectDDD: () => import('./SelectDDD'),
     AppTablePromotions: () => import('./AppTablePromotions'),
-    AppTableDataSelected: () => import('./AppTableDataSelected')
+    AppTableDataSelected: () => import('./AppTableDataSelected'),
+    CheckTax: () => import('./CheckTax')
   },
 
   data () {
     return {
       originSelected: '',
       destinySelected: '',
-      minuteSelected: ''
+      minuteSelected: '',
+      inputIsValid: true
     }
   },
 
@@ -84,12 +92,17 @@ export default {
       // if all inputs have been selected
       if (this.originSelected && this.destinySelected && this.minuteSelected) {
         // checks if exist tax
-        if (!this.getPrices[this.accessed()]) return '---'
+        if (!this.getPrices[this.accessed()]) {
+          this.inputIsValid = false
+          return '---'
+        }
 
         return this.getPlans.map(plan => {
+          this.inputIsValid = true
           return this.$services.calculationWithPlan(plan.time, this.minuteSelected, this.getPrices, this.accessed)
         })
       }
+      // this.inputIsValid = false
       return '---'
     },
 
