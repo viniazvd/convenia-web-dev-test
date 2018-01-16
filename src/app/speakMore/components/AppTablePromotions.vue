@@ -26,7 +26,25 @@
 export default {
   name: 'AppTablePromotions',
 
-  props: ['plans', 'withPromotion', 'withoutPromotion', 'isValid'],
+  props: {
+    plans: {
+      type: Array,
+      validator: function (plans) {
+        const hasPlanName = plan => Object.keys(plan).includes('plan_name')
+
+        return plans.every(hasPlanName)
+      }
+    },
+    withPromotion: {
+      type: [String, Array]
+    },
+    withoutPromotion: {
+      type: [String, Array]
+    },
+    isValid: {
+      type: Boolean
+    }
+  },
 
   computed: {
     inputIsValid () {
