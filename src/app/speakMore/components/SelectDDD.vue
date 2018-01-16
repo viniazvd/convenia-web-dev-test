@@ -1,14 +1,13 @@
 <template>
-  <div class="container__select--configuration">
-    <select 
-      :value="this.selected"
-      @input="this.emiteOrigin">
-      <option value="">{{ this.label }}</option>
-      <option v-for="ddd in this.ddds" :value="ddd" :key="ddd.uniqueKeyNotFound">
-        {{ ddd }}
-      </option>
-    </select>
-  </div>
+  <select 
+    class="container__select--configuration"
+    :value="this.selected"
+    @input="this.emiteOrigin">
+    <option value="">{{ this.label }}</option>
+    <option v-for="ddd in this.ddds" :value="ddd" :key="ddd.uniqueKeyNotFound">
+      {{ ddd }}
+    </option>
+  </select>
 </template>
 
 <script>
@@ -48,7 +47,12 @@ export default {
 
 .container__select--configuration
   flex: 0 1 auto;
-  align-content: center;
-  padding-right: $base__padding-right;
+  margin-right: 0px;
+
+@media screen and(min-width: 500px)
+  .container__select--configuration
+    margin-right: 80px;
+    width: 6.5em;
+    
 </style>
 
