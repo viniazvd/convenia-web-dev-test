@@ -20,8 +20,6 @@
 export default {
   name: 'AppTableDataSelected',
 
-  // props: ['origin', 'destiny', 'minutes', 'details'],
-
   props: {
     origin: {
       type: String,
