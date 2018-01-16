@@ -20,7 +20,34 @@
 export default {
   name: 'AppTableDataSelected',
 
-  props: ['origin', 'destiny', 'minutes', 'details'],
+  // props: ['origin', 'destiny', 'minutes', 'details'],
+
+  props: {
+    origin: {
+      type: String,
+      require: false,
+      validator: function (value) {
+        return !value || value.length === 3
+      }
+    },
+    destiny: {
+      type: String,
+      require: false,
+      validator: function (value) {
+        return !value || value.length === 3
+      }
+    },
+    minutes: {
+      type: String,
+      require: false,
+      validator: function (value) {
+        return !value || Number(value) || typeof value === 'number'
+      }
+    },
+    details: {
+      type: [Array, Object]
+    }
+  },
 
   methods: {
     wasChose () {
