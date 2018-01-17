@@ -17,7 +17,7 @@
 
       <input 
         type="number" 
-        v-model="minuteSelected" 
+        v-model.number="minuteSelected" 
         placeholder="Minutos"
         style="width: 80px;" />
     </div>
